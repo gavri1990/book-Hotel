@@ -1,0 +1,102 @@
+﻿@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+body {
+    /*background: #ff9933;*/
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-image: url('images/back.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+
+.form {
+    padding-top: 50px;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    min-height: 84vh;
+}
+
+
+    .form input {
+        font-family: "Roboto", sans-serif;
+        outline: 0;
+        background: #f2f2f2;
+        box-sizing: border-box;
+        font-size: 16px;
+        height: 45px;
+        width: 400px;
+        border: 3px solid #999999;
+    }
+
+        .form input[type = submit] {
+            font-family: "Roboto", sans-serif;
+            text-transform: uppercase;
+            outline: 0;
+            background: #4d4d4d;
+            color: #FFFFFF;
+            font-size: 14px;
+            -webkit-transition: all 0.3 ease;
+            transition: all 0.3 ease;
+            cursor: pointer;
+            height: 45px;
+            width: 200px;
+        }
+
+    .form button:hover, .form button:active, .form button:focus {
+        background: #b3b3b3;
+    }
+
+
+/* Style top navigation bar */
+.topnav {
+    overflow: hidden;
+    background-color: #333; /*hex colour*/
+    cursor: default;
+    opacity: 0.96;
+}
+
+.logo {
+    overflow: hidden;
+    background-color: #333;
+}
+
+.img {
+    width: 10%;
+    height: 15%;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+/* Style the topnav links */
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2; /*hex colour*/
+    text-align: center;
+    padding: 14px 16px; /*top and bottom 14px, right and left 16px*/
+    text-decoration: none;
+}
+
+    /* Change color on hover */
+    .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+
+.left {
+    float: left;
+}
+
+.footer {
+    font-family: "Roboto", sans-serif;
+    border: 1px dotted black;
+    padding: 10px;
+    bottom: 0;
+    position: relative;
+    z-index: 1;
+    bottom: 0px;
+}

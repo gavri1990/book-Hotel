@@ -1,0 +1,381 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B8C1BA50-D69C-4775-9AA6-F24C5B7B7076}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Hotel_Booking_App</RootNamespace>
+    <AssemblyName>Hotel_Booking_App</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44370</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bookHotel.png" />
+    <Content Include="customerbookings.aspx" />
+    <Content Include="customerevaluations.aspx" />
+    <Content Include="eyeButton.png" />
+    <Content Include="folder.png" />
+    <Content Include="hotelDummy.jpg" />
+    <Content Include="HotelRoomImages\andrea%40email.com\1\bedroomSuite.jpg" />
+    <Content Include="HotelRoomImages\andrea%40email.com\2\tripleRoomCityView.png" />
+    <Content Include="HotelRoomImages\andrea%40email.com\3\deluxeFamilyRoom.png" />
+    <Content Include="HotelRoomImages\andrea%40email.com\classicHotel.jpg" />
+    <Content Include="HotelRoomImages\fernando%40gmail.com\1\doubleRoomGardenView.jpg" />
+    <Content Include="HotelRoomImages\fernando%40gmail.com\2\oneBedroomApartmentSeaView.jpg" />
+    <Content Include="HotelRoomImages\fernando%40gmail.com\cancunBoutiqueHotel.jpg" />
+    <Content Include="HotelRoomImages\giannis%40gmail.com\1\suiteSeeView.jpg" />
+    <Content Include="HotelRoomImages\giannis%40gmail.com\2\roomGardenView.jpg" />
+    <Content Include="HotelRoomImages\giannis%40gmail.com\3\superiorSuite.jpg" />
+    <Content Include="HotelRoomImages\giannis%40gmail.com\sunRiseApartments.jpg" />
+    <Content Include="HotelRoomImages\jordi%40gmail.com\1\deluxeDoubleRoom.jpg" />
+    <Content Include="HotelRoomImages\jordi%40gmail.com\2\premiumFamilyRoom.jpg" />
+    <Content Include="HotelRoomImages\jordi%40gmail.com\hotelCatalan.jpg" />
+    <Content Include="HotelRoomImages\juan%40email.com\1\doubleRoomCityView.jpg" />
+    <Content Include="HotelRoomImages\juan%40email.com\2\superiorSuiteCityView.jpg" />
+    <Content Include="HotelRoomImages\juan%40email.com\verdeApartments.jpg" />
+    <Content Include="HotelRoomImages\leigh%40email.com\1\whiteApartment.jpg" />
+    <Content Include="HotelRoomImages\leigh%40email.com\2\deluxeRoom.jpg" />
+    <Content Include="HotelRoomImages\leigh%40email.com\3\tripleRoomCityView.jpg" />
+    <Content Include="HotelRoomImages\leigh%40email.com\tranquilityResortSydney.jpg" />
+    <Content Include="HotelRoomImages\marios%40gmail.com\1\whiteCubeRoom.jpg" />
+    <Content Include="HotelRoomImages\marios%40gmail.com\2\auroraSuite.jpg" />
+    <Content Include="HotelRoomImages\marios%40gmail.com\parilioHotel.png" />
+    <Content Include="HotelRoomImages\mike%40gmail.com\1\executiveRoom.png" />
+    <Content Include="HotelRoomImages\mike%40gmail.com\2\terraceRoomCityView.png" />
+    <Content Include="HotelRoomImages\mike%40gmail.com\londonLodge.png" />
+    <Content Include="HotelRoomImages\monte%40email.com\1\TripleRoomOnGroundFloor.jpg" />
+    <Content Include="HotelRoomImages\monte%40email.com\2\PremiumSuiteCityView.png" />
+    <Content Include="HotelRoomImages\monte%40email.com\hotelDeLaVilla.png" />
+    <Content Include="HotelRoomImages\penelope%40email.com\1\apartmentGardenView.jpg" />
+    <Content Include="HotelRoomImages\penelope%40email.com\2\luxurySuite.jpg" />
+    <Content Include="HotelRoomImages\penelope%40email.com\hotelElGuajataca.jpg" />
+    <Content Include="HotelRoomImages\vlad%40gmail.com\1\modernDoubleRoom.jpg" />
+    <Content Include="HotelRoomImages\vlad%40gmail.com\2\terraceApartment.jpg" />
+    <Content Include="HotelRoomImages\vlad%40gmail.com\ozerkovskayaHotel.jpg" />
+    <Content Include="HotelRoomImages\yamamoto%40gmail.com\1\executiveRoomCityView.jpg" />
+    <Content Include="HotelRoomImages\yamamoto%40gmail.com\2\deluxeFamilyApartment.png" />
+    <Content Include="HotelRoomImages\yamamoto%40gmail.com\shangriLaHotel.jpg" />
+    <Content Include="login.css" />
+    <Content Include="main.css" />
+    <Content Include="maxPersons1.png" />
+    <Content Include="Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Model1.edmx.sql" />
+    <Content Include="Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="style.css" />
+    <Content Include="travelImage.jpg" />
+    <Content Include="travelWorldImage.png" />
+    <Content Include="travelWorldImg.png" />
+    <Content Include="Web.config" />
+    <Content Include="login.aspx" />
+    <Content Include="managerooms.aspx" />
+    <Content Include="submitevaluation.aspx" />
+    <Content Include="payment.aspx" />
+    <Content Include="hotelbookings.aspx" />
+    <Content Include="hotelevaluations.aspx" />
+    <Content Include="loyalty.aspx" />
+    <Content Include="bookroom.aspx" />
+    <Content Include="registercustomer.aspx" />
+    <Content Include="registerhotel.aspx" />
+    <Content Include="search.aspx" />
+    <Content Include="updatecustomer.aspx" />
+    <Content Include="hotelmain.aspx" />
+    <Content Include="searchresult.aspx" />
+    <Content Include="updatehotel.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Booking.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CreditCard.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Currency.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Customer.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="customerbookings.aspx.cs">
+      <DependentUpon>customerbookings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customerbookings.aspx.designer.cs">
+      <DependentUpon>customerbookings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="customerevaluations.aspx.cs">
+      <DependentUpon>customerevaluations.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customerevaluations.aspx.designer.cs">
+      <DependentUpon>customerevaluations.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Evaluation.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Hotel.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HotelOwner.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Room.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="managerooms.aspx.cs">
+      <DependentUpon>managerooms.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="managerooms.aspx.designer.cs">
+      <DependentUpon>managerooms.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="submitevaluation.aspx.cs">
+      <DependentUpon>submitevaluation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="submitevaluation.aspx.designer.cs">
+      <DependentUpon>submitevaluation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="payment.aspx.cs">
+      <DependentUpon>payment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="payment.aspx.designer.cs">
+      <DependentUpon>payment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hotelbookings.aspx.cs">
+      <DependentUpon>hotelbookings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hotelbookings.aspx.designer.cs">
+      <DependentUpon>hotelbookings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hotelevaluations.aspx.cs">
+      <DependentUpon>hotelevaluations.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hotelevaluations.aspx.designer.cs">
+      <DependentUpon>hotelevaluations.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="loyalty.aspx.cs">
+      <DependentUpon>loyalty.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="loyalty.aspx.designer.cs">
+      <DependentUpon>loyalty.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="bookroom.aspx.cs">
+      <DependentUpon>bookroom.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="bookroom.aspx.designer.cs">
+      <DependentUpon>bookroom.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="registercustomer.aspx.cs">
+      <DependentUpon>registercustomer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="registercustomer.aspx.designer.cs">
+      <DependentUpon>registercustomer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="registerhotel.aspx.cs">
+      <DependentUpon>registerhotel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="registerhotel.aspx.designer.cs">
+      <DependentUpon>registerhotel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="search.aspx.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="search.aspx.designer.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="updatecustomer.aspx.cs">
+      <DependentUpon>updatecustomer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="updatecustomer.aspx.designer.cs">
+      <DependentUpon>updatecustomer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hotelmain.aspx.cs">
+      <DependentUpon>hotelmain.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hotelmain.aspx.designer.cs">
+      <DependentUpon>hotelmain.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="searchresult.aspx.cs">
+      <DependentUpon>searchresult.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="searchresult.aspx.designer.cs">
+      <DependentUpon>searchresult.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="updatehotel.aspx.cs">
+      <DependentUpon>updatehotel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="updatehotel.aspx.designer.cs">
+      <DependentUpon>updatehotel.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Hotel_Booking_App.exe.config" />
+    <None Include="packages.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51258</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44370/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

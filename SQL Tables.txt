@@ -1,0 +1,98 @@
+-- Creating table 'CustomerSet'
+CREATE TABLE [dbo].[CustomerSet] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Name] nvarchar(50)  NOT NULL,
+    [Email] nvarchar(30) UNIQUE NOT NULL,
+    [Phone] nvarchar(20) UNIQUE NOT NULL,
+    [Password] nvarchar(30)  NOT NULL,
+    [StatusName] nvarchar(8)  NOT NULL,
+    [BookingsMadeTotal] smallint  NOT NULL,
+    [Currency_ISOcode] nvarchar(3)  NULL
+);
+GO
+
+-- Creating table 'CreditCardSet'
+CREATE TABLE [dbo].[CreditCardSet] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [CreditCardNumber] nvarchar(16)  NOT NULL,
+    [CreditCardType] nvarchar(20)  NOT NULL,
+    [CardholderName] nvarchar(50)  NOT NULL,
+    [Customer_Id] int  NULL
+);
+GO
+
+-- Creating table 'HotelSet'
+CREATE TABLE [dbo].[HotelSet] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [HotelName] nvarchar(30)  NOT NULL,
+    [StreetNameNumber] nvarchar(40)  NOT NULL,
+    [PostalCode] nvarchar(8)  NOT NULL,
+    [City] nvarchar(20)  NOT NULL,
+    [Country] nvarchar(20)  NOT NULL,
+    [HotelPhotoUrl] nvarchar(50)  NULL,	
+    [AverageRating] float  NULL,
+    [HotelOwner_Id] int  NULL
+);
+GO
+
+-- Creating table 'BookingSet'
+CREATE TABLE [dbo].[BookingSet] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [CheckIn] datetime  NOT NULL,
+    [CheckOut] datetime  NOT NULL,
+    [PersonsNumber] smallint  NOT NULL,
+    [AmountPaid] float  NOT NULL,
+    [DateMade] datetime  NOT NULL,
+    [Evaluated] bit  NOT NULL,
+    [CustomerId] int  NULL,
+    [RoomId] int  NULL
+);
+GO
+
+-- Creating table 'HotelOwnerSet'
+CREATE TABLE [dbo].[HotelOwnerSet] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Email] nvarchar(30) UNIQUE NOT NULL,
+    [Password] nvarchar(30)  NOT NULL,
+    [Currency_ISOcode] nvarchar(3)  NULL
+);
+GO
+
+-- Creating table 'CurrencySet'
+CREATE TABLE [dbo].[CurrencySet] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [ISOcode] nvarchar(3)  NOT NULL,
+    [CurrencyName] nvarchar(25) UNIQUE NOT NULL
+);
+GO
+
+-- Creating table 'EvaluationSet'
+CREATE TABLE [dbo].[EvaluationSet] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [EvaluationDate] datetime  NOT NULL,
+    [Rating] float  NOT NULL,
+    [Comment] nvarchar(500)  NOT NULL,
+    [Customer_Id] int  NULL,
+    [Hotel_Id] int  NULL
+);
+GO
+
+-- Creating table 'ServiceSet'
+CREATE TABLE [dbo].[ServiceSet] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [ServiceName] nvarchar(20)  NOT NULL,
+    [Room_Id] int  NULL
+);
+GO
+
+-- Creating table 'RoomSet'
+CREATE TABLE [dbo].[RoomSet] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [RoomName] nvarchar(40)  NOT NULL,
+    [Rate] float  NOT NULL,
+    [MaxPersons] smallint  NOT NULL,
+    [RoomNumber] nvarchar(5)  NOT NULL,
+    [RoomPhotoUrl] nvarchar(50)  NULL,
+    [Hotel_Id] int  NULL
+);
+GO

@@ -1,0 +1,280 @@
+INSERT INTO CurrencySet VALUES
+('AUD', 'Australian Dollar'),
+('CNY', 'Chinese Yuan'),
+('EUR', 'Euro'),
+('GBP', 'British Pound'),
+('JPY', 'Japanese Yen'),
+('MXN', 'Mexican Peso'),
+('RUB', 'Russian Ruble'),
+('USD', 'US Dollar');
+
+------------------------------------------------------------------------------------
+
+
+SET IDENTITY_INSERT CustomerSet ON
+
+INSERT INTO CustomerSet(Id, Name, Email, Phone, Password, StatusName, BookingsMadeTotal, Currency_ISOcode) VALUES
+(1, 'Alex', 'alex@email.com', '6943991526', '123', 'Standard', 4, 'EUR'),
+(2, 'George', 'george@email.com', '6945663552', '678', 'Premium', 9, 'EUR'),
+(3, 'John Doe', 'jd111@mail.com', '6976213226', '111', 'Standard', 0, 'EUR'),
+(4, 'Gregory', 'greg@mail.com', '6943225526', '222', 'Standard', 0, 'EUR'),
+(5, 'Mark', 'mark@mail.com', '69436635526', '333', 'Standard', 0, 'USD'),
+(6, 'Julio', 'julio@mail.com', '6943213226', '444', 'Standard', 0, 'EUR'),
+(7, 'Pavel', 'pav@mail.com', '6943663616', '555', 'Standard', 0, 'RUB'),
+(8, 'Tom', 'tommy@mail.com', '6943977616', '666', 'Standard', 0, 'GBP');
+
+
+SET IDENTITY_INSERT CustomerSet OFF
+
+------------------------------------------------------------------------------------
+
+SET IDENTITY_INSERT CreditCardSet ON
+
+INSERT INTO CreditCardSet(Id, CreditCardNumber, CreditCardType, CardholderName, Customer_Id) VALUES
+(1, '1253671892340852', 'Visa', 'Alex E.', 1),
+(2, '4256718290365536', 'MasterCard', 'Giorgos G.', 2),
+(3, '7586839625346999', 'Diners', 'John D.', 3),
+(4, '7763552290871222', 'MasterCard', 'Greg Sager.', 4),
+(5, '6665788290887654', 'Diners', 'Mark C.', 5),
+(6, '1255899876563452', 'Visa', 'Julio S.', 6),
+(7, '8887766623144030', 'American Express', 'Pavel Prohorov', 7),
+(8, '9080233367908821', 'American Express', 'Tom W.', 8);
+
+
+SET IDENTITY_INSERT CreditCardSet OFF
+------------------------------------------------------------------------------------
+
+
+SET IDENTITY_INSERT HotelOwnerSet ON
+
+INSERT INTO HotelOwnerSet (Id, Email, Password, Currency_ISOcode) VALUES
+(1, 'giannis@gmail.com', '87746', 'EUR'),
+(2, 'marios@gmail.com', '87686', 'EUR'),
+(3, 'monte@email.com', '333', 'EUR'),
+(4, 'vlad@gmail.com', '444', 'RUB'),
+(5, 'juan@email.com', '555', 'EUR'),
+(6, 'jordi@gmail.com', '666', 'EUR'),
+(7, 'penelope@email.com', '777', 'EUR'),
+(8, 'yamamoto@gmail.com', '888', 'JPY'),
+(9, 'andrea@email.com', '999', 'EUR'),
+(10, 'fernando@gmail.com', '101010', 'MXN'),
+(11, 'leigh@email.com', '111111', 'AUD'),
+(12, 'mike@gmail.com', '121212', 'GBP');
+
+
+SET IDENTITY_INSERT HotelOwnerSet OFF
+
+
+------------------------------------------------------------------------------------
+
+
+
+
+SET IDENTITY_INSERT HotelSet ON
+
+INSERT INTO HotelSet (Id, HotelName, StreetNameNumber, PostalCode, City, Country, HotelPhotoUrl, AverageRating, HotelOwner_Id) VALUES
+(1, 'Sun Rise Apartments', 'I. Foka 36', '543', 'Rethimno', 'Greece', 'sunRiseApartments.jpg', 10, 1),
+(2, 'Parilio Hotel', 'Naoussas 49', '34453', 'Paros', 'Greece', 'parilioHotel.png', 9, 2),
+(3, 'Hotel de la Villa', 'Via Venetto 305', '11143', 'Rome', 'Italy', 'hotelDeLaVilla.png', 10, 3),
+(4, 'Ozerkovskaya Hotel', 'Tverskaya Street 102', '66547', 'Moscow', 'Russia', 'ozerkovskayaHotel.jpg', 10, 4),
+(5, 'Verde Apartments', 'Calle Fuencarral 21', '77635', 'Madrid', 'Spain', 'verdeApartments.jpg', 9, 5),
+(6, 'Hotel Catalan', 'Avinguda Diagonal 33', '77655', 'Barcelona', 'Spain', 'hotelCatalan.jpg', NULL, 6),
+(7, 'Hotel El Guajataca', 'Calle del Treinta y Uno de Agosto 31', '77615', 'San Sebastian', 'Spain', 'hotelElGuajataca.jpg', NULL, 7),
+(8, 'Shangri-La Hotel', 'Ueno Ameyokocho 205', '12554', 'Tokyo', 'Japan', 'shangriLaHotel.jpg', 10, 8),
+(9, 'Classic Hotel', 'Via Maggio 77', '87762', 'Florence', 'Italy', 'classicHotel.jpg', 9, 9),
+(10, 'Cancun Boutique Hotel', 'Kukulcan Boulevard 160', '99743', 'Cancun', 'Mexico', 'cancunBoutiqueHotel.jpg', 10, 10),
+(11, 'Tranquility Resort', 'Phillip Street 121', '20092', 'Sydney', 'Australia', 'tranquilityResortSydney.jpg', NULL, 11),
+(12, 'London Lodge', 'Thames Street 256', '17433', 'London', 'England', 'londonLodge.png', NULL, 12);
+
+
+
+SET IDENTITY_INSERT HotelSet OFF
+
+
+
+
+
+
+------------------------------------------------------------------------------------
+
+
+
+SET IDENTITY_INSERT RoomSet ON
+
+INSERT INTO RoomSet (Id, RoomName, Rate, MaxPersons, RoomNumber, RoomPhotoUrl, Hotel_Id) VALUES
+(1, 'Suite with see view', 78, 4, 1, 'suiteSeeView.jpg', 1),
+(2, 'Room with garden view', 55, 4, 2, 'roomGardenView.jpg', 1),
+(3, 'Superior Suite', 85, 2, 3, 'superiorSuite.jpg', 1),
+(4, 'White Cube Room', 70, 2, 1, 'whiteCubeRoom.jpg', 2),
+(5, 'Aurora Suite', 88, 3, 2, 'auroraSuite.jpg', 2),
+(6, 'Triple Room on Ground Floor', 70, 3, 1, 'TripleRoomOnGroundFloor.jpg', 3),
+(7, 'Premium Suite with City View', 90, 2, 2, 'PremiumSuiteCityView.png', 3),
+(8, 'Modern Double Room', 5439, 2, 1, 'modernDoubleRoom.jpg', 4),
+(9, 'Terrace Apartment', 7253, 2, 2, 'terraceApartment.jpg', 4),
+(10, 'Double Room with City View', 68, 2, 1, 'doubleRoomCityView.jpg', 5),
+(11, 'Superior Suite with City View', 83, 2, 2, 'superiorSuiteCityView.jpg', 5),
+(12, 'Deluxe Double Room', 75, 2, 1, 'deluxeDoubleRoom.jpg', 6),
+(13, 'Premium Family Room', 87, 5, 2, 'premiumFamilyRoom.jpg', 6),
+(14, 'Apartment with Garden View', 70, 4, 1, 'apartmentGardenView.jpg', 7),
+(15, 'Luxury Suite', 89, 3, 2, 'luxurySuite.jpg', 7),
+(16, 'Executive Room with City View', 9870, 2, 1, 'executiveRoomCityView.jpg', 8),
+(17, 'Deluxe Family Room', 11104, 4, 2, 'deluxeFamilyApartment.png', 8),
+(18, 'Bedroom Suite', 80, 2, 1, 'bedroomSuite.jpg', 9),
+(19, 'Triple Room with City View', 78, 3, 2, 'tripleRoomCityView.png', 9),
+(20, 'Deluxe Family Room', 90, 4, 3, 'deluxeFamilyRoom.png', 9),
+(21, 'Double Room with Garden View', 1771, 2, 1, 'doubleRoomGardenView.jpg', 10),
+(22, 'Apartment with Sea View', 1850, 3, 2, 'oneBedroomApartmentSeaView.jpg', 10),
+(23, 'White Apartment', 106, 3, 1, 'whiteApartment.jpg', 11),
+(24, 'Deluxe Room', 114, 2, 2, 'deluxeRoom.jpg', 11),
+(25, 'Triple Room with City View', 125, 3, 3, 'tripleRoomCityView.jpg', 11),
+(26, 'Executive Room', 80, 4, 1, 'executiveRoom.png', 12),
+(27, 'Terrace Room with City View', 85, 2, 2, 'terraceRoomCityView.png', 12);
+
+
+
+
+
+SET IDENTITY_INSERT RoomSet OFF
+
+
+
+
+--------------------------------------------------------------------------------------
+
+
+
+
+SET IDENTITY_INSERT ServiceSet ON
+
+INSERT INTO ServiceSet (Id, ServiceName, Room_Id) VALUES
+(1, 'Cable TV', 1),
+(2, 'Breakfast', 1),
+(3, 'Air-Conditioning', 1),
+(4, 'Parking', 2),
+(5, 'Air-Conditioning', 2),
+(6, 'Cable TV', 3),
+(7, 'Breakfast', 3),
+(8, 'Air-Conditioning', 3),
+(9, 'Wifi', 3),
+(10, 'Breakfast', 4),
+(11, 'Air-Conditioning', 4),
+(12, 'Parking', 5),
+(13, 'Air-Conditioning', 5),
+(14, 'Cable TV', 5),
+(15, 'Breakfast', 6),
+(16, 'Air-Conditioning', 6),
+(17, 'Parking', 7),
+(18, 'Air-Conditioning', 7),
+(19, 'Wifi', 7),
+(20, 'Air-Conditioning', 8),
+(21, 'Cable TV', 8),
+(22, 'Breakfast', 9),
+(23, 'Wifi', 9),
+(24, 'Breakfast', 10),
+(25, 'Air-Conditioning', 10),
+(26, 'Wifi', 11),
+(27, 'Air-Conditioning', 11),
+(28, 'Cable TV', 11),
+(29, 'Breakfast', 12),
+(30, 'Wifi', 12),
+(31, 'Cable TV', 13),
+(32, 'Breakfast', 13),
+(33, 'Parking', 13),
+(34, 'Breakfast', 14),
+(35, 'Air-Conditioning', 14),
+(36, 'Wifi', 15),
+(37, 'Air-Conditioning', 15),
+(38, 'Breakfast', 16),
+(39, 'Air-Conditioning', 16),
+(40, 'Parking', 17),
+(41, 'Wifi', 17),
+(42, 'Air-Conditioning', 18),
+(43, 'Wifi', 18),
+(44, 'Air-Conditioning', 19),
+(45, 'Cable TV', 19),
+(46, 'Breakfast', 19),
+(47, 'Wifi', 20),
+(48, 'Cable TV', 20),
+(49, 'Breakfast', 20),
+(50, 'Breakfast', 21),
+(51, 'Wifi', 21),
+(52, 'Air-Conditioning', 21),
+(53, 'Breakfast', 22),
+(54, 'Wifi', 22),
+(55, 'Air-Conditioning', 22),
+(56, 'Breakfast', 23),
+(57, 'Wifi', 23),
+(58, 'Air-Conditioning', 24),
+(59, 'Wifi', 24),
+(60, 'Parking', 24),
+(61, 'Air-Conditioning', 25),
+(62, 'Wifi', 25),
+(63, 'Parking', 25),
+(64, 'Parking', 26),
+(65, 'Air-Conditioning', 26),
+(66, 'Cable TV', 27),
+(67, 'Breakfast', 27),
+(68, 'Air-Conditioning', 27);
+
+
+SET IDENTITY_INSERT ServiceSet OFF
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------
+
+
+
+SET IDENTITY_INSERT BookingSet ON
+
+INSERT INTO BookingSet (Id, CheckIn, CheckOut, PersonsNumber, AmountPaid, DateMade, Evaluated, CustomerId, RoomId) VALUES
+
+(1, '2020-08-28', '2020-08-31',	1, 255, '2020-06-30 14:25:49.760', 1, 1, 3),
+(2, '2020-05-01', '2020-05-04', 3, 234, '2020-01-08 14:27:37.117', 1, 1, 19),
+(3, '2021-01-04', '2021-01-08', 2, 300,	'2020-11-10 14:28:44.147', 0, 1, 12),
+(4, '2020-01-29', '2020-02-01', 1, 33312, '2019-10-10 14:30:12.397', 1,	1, 17),
+(5, '2020-02-02', '2020-02-08', 2, 540, '2020-10-04 16:35:30.397', 1, 2, 7),
+(6, '2020-07-27', '2020-08-03', 2, 546, '2020-10-05 17:08:11.667', 1, 2, 1),
+(7, '2019-07-01', '2019-07-06', 2, 9250, '2020-10-05 17:15:04.377', 1, 2, 22),
+(8, '2020-12-17', '2020-12-22', 2, 570, '2020-10-05 17:18:10.497', 0, 2, 24),
+(9, '2020-05-29', '2020-06-01', 2, 204, '2020-10-05 17:19:54.273', 1, 2, 10),
+(10, '2019-08-26', '2019-08-30', 2, 352, '2020-10-05 17:28:33.367', 1, 2, 5),
+(11, '2019-11-13', '2019-11-18', 2, 36265, '2020-10-05 17:32:00.167',	1, 2, 9),
+(12, '2021-03-10', '2021-03-16', 2, 510, '2020-10-05 17:35:44.043', 0, 2, 27),
+(13, '2021-08-01', '2021-08-08', 2, 385, '2020-10-05 17:40:58.263', 0, 2, 2);
+
+
+SET IDENTITY_INSERT BookingSet OFF
+
+
+
+
+--------------------------------------------------------------------------------------
+
+
+SET IDENTITY_INSERT EvaluationSet ON
+
+INSERT INTO EvaluationSet (Id, EvaluationDate, Rating, Comment, Customer_Id, Hotel_Id) VALUES
+
+(1, '2020-09-02 14:31:24.313', 10, 'The best choice we could make!', 1, 1),
+(2, '2020-05-08 14:32:03.293', 9, 'Great choice.We had all we needed', 1, 9),
+(3, '2020-02-04 14:32:21.657', 10, 'Fantastic hotel in the heart of Tokyo!', 1, 8),
+(4, '2020-08-06 17:10:52.917', 10, 'Fantastic room with stunning sea view!', 2,	1),
+(5, '2020-02-10 17:12:45.833', 10, 'Great luxurious room, in a quiet street but at the same time close to many touristic attractions', 2, 3),
+(6, '2019-07-08 17:16:34.717', 10, 'We had a great stay, I highly recommend this hotel!', 2, 10),
+(7, '2020-06-05 17:22:08.073', 9, 'Clean and beautiful apartment on a central street of Madrid', 2, 5),
+(8, '2019-09-02 17:29:37.427', 9, 'Great room, could be a little cheaper though', 2, 2),
+(9, '2019-11-21 17:33:09.790', 10, 'Great room with breakfast in the heart of Moscow', 2, 4);
+
+
+SET IDENTITY_INSERT EvaluationSet OFF
+
+
+
+
+
+

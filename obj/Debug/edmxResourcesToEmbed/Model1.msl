@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="Model1Container1">
+    <EntitySetMapping Name="CustomerSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Customer)">
+        <MappingFragment StoreEntitySet="CustomerSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="BookingsMadeTotal" ColumnName="BookingsMadeTotal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CreditCardSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.CreditCard)">
+        <MappingFragment StoreEntitySet="CreditCardSet">
+          <ScalarProperty Name="CreditCardNumber" ColumnName="CreditCardNumber" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CreditCardType" ColumnName="CreditCardType" />
+          <ScalarProperty Name="CardholderName" ColumnName="CardholderName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HotelSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Hotel)">
+        <MappingFragment StoreEntitySet="HotelSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="HotelName" ColumnName="HotelName" />
+          <ScalarProperty Name="StreetNameNumber" ColumnName="StreetNameNumber" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="HotelPhotoUrl" ColumnName="HotelPhotoUrl" />
+          <ScalarProperty Name="AverageRating" ColumnName="AverageRating" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BookingSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Booking)">
+        <MappingFragment StoreEntitySet="BookingSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CheckIn" ColumnName="CheckIn" />
+          <ScalarProperty Name="CheckOut" ColumnName="CheckOut" />
+          <ScalarProperty Name="PersonsNumber" ColumnName="PersonsNumber" />
+          <ScalarProperty Name="AmountPaid" ColumnName="AmountPaid" />
+          <ScalarProperty Name="DateMade" ColumnName="DateMade" />
+          <ScalarProperty Name="Evaluated" ColumnName="Evaluated" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HotelOwnerSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.HotelOwner)">
+        <MappingFragment StoreEntitySet="HotelOwnerSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CurrencySet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Currency)">
+        <MappingFragment StoreEntitySet="CurrencySet">
+          <ScalarProperty Name="ISOcode" ColumnName="ISOcode" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EvaluationSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Evaluation)">
+        <MappingFragment StoreEntitySet="EvaluationSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="EvaluationDate" ColumnName="EvaluationDate" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Service)">
+        <MappingFragment StoreEntitySet="ServiceSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoomSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Room)">
+        <MappingFragment StoreEntitySet="RoomSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RoomName" ColumnName="RoomName" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="MaxPersons" ColumnName="MaxPersons" />
+          <ScalarProperty Name="RoomNumber" ColumnName="RoomNumber" />
+          <ScalarProperty Name="RoomPhotoUrl" ColumnName="RoomPhotoUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="CustomerCreditCard" TypeName="Model1.CustomerCreditCard" StoreEntitySet="CreditCardSet">
+      <EndProperty Name="Customer">
+        <ScalarProperty Name="Id" ColumnName="Customer_Id" />
+      </EndProperty>
+      <EndProperty Name="CreditCard">
+        <ScalarProperty Name="CreditCardNumber" ColumnName="CreditCardNumber" />
+      </EndProperty>
+      <Condition ColumnName="Customer_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CurrencyCustomer" TypeName="Model1.CurrencyCustomer" StoreEntitySet="CustomerSet">
+      <EndProperty Name="Currency">
+        <ScalarProperty Name="ISOcode" ColumnName="Currency_ISOcode" />
+      </EndProperty>
+      <EndProperty Name="Customer">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Currency_ISOcode" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CustomerEvaluation" TypeName="Model1.CustomerEvaluation" StoreEntitySet="EvaluationSet">
+      <EndProperty Name="Customer">
+        <ScalarProperty Name="Id" ColumnName="Customer_Id" />
+      </EndProperty>
+      <EndProperty Name="Evaluation">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Customer_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="HotelOwnerHotel" TypeName="Model1.HotelOwnerHotel" StoreEntitySet="HotelSet">
+      <EndProperty Name="HotelOwner">
+        <ScalarProperty Name="Id" ColumnName="HotelOwner_Id" />
+      </EndProperty>
+      <EndProperty Name="Hotel">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="HotelOwner_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="HotelEvaluation" TypeName="Model1.HotelEvaluation" StoreEntitySet="EvaluationSet">
+      <EndProperty Name="Hotel">
+        <ScalarProperty Name="Id" ColumnName="Hotel_Id" />
+      </EndProperty>
+      <EndProperty Name="Evaluation">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Hotel_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="HotelRoom" TypeName="Model1.HotelRoom" StoreEntitySet="RoomSet">
+      <EndProperty Name="Hotel">
+        <ScalarProperty Name="Id" ColumnName="Hotel_Id" />
+      </EndProperty>
+      <EndProperty Name="Room">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Hotel_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CurrencyHotelOwner" TypeName="Model1.CurrencyHotelOwner" StoreEntitySet="HotelOwnerSet">
+      <EndProperty Name="Currency">
+        <ScalarProperty Name="ISOcode" ColumnName="Currency_ISOcode" />
+      </EndProperty>
+      <EndProperty Name="HotelOwner">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Currency_ISOcode" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RoomService" TypeName="Model1.RoomService" StoreEntitySet="ServiceSet">
+      <EndProperty Name="Room">
+        <ScalarProperty Name="Id" ColumnName="Room_Id" />
+      </EndProperty>
+      <EndProperty Name="Service">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Room_Id" IsNull="false" />
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

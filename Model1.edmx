@@ -1,0 +1,732 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Model1StoreContainer">
+    <EntitySet Name="CustomerSet" EntityType="Model1.Store.CustomerSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CreditCardSet" EntityType="Model1.Store.CreditCardSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="HotelSet" EntityType="Model1.Store.HotelSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BookingSet" EntityType="Model1.Store.BookingSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="HotelOwnerSet" EntityType="Model1.Store.HotelOwnerSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CurrencySet" EntityType="Model1.Store.CurrencySet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EvaluationSet" EntityType="Model1.Store.EvaluationSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ServiceSet" EntityType="Model1.Store.ServiceSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RoomSet" EntityType="Model1.Store.RoomSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="CustomerCreditCard" Association="Model1.Store.CustomerCreditCard">
+      <End Role="Customer" EntitySet="CustomerSet" />
+      <End Role="CreditCard" EntitySet="CreditCardSet" />
+    </AssociationSet>
+    <AssociationSet Name="CurrencyCustomer" Association="Model1.Store.CurrencyCustomer">
+      <End Role="Currency" EntitySet="CurrencySet" />
+      <End Role="Customer" EntitySet="CustomerSet" />
+    </AssociationSet>
+    <AssociationSet Name="CustomerEvaluation" Association="Model1.Store.CustomerEvaluation">
+      <End Role="Customer" EntitySet="CustomerSet" />
+      <End Role="Evaluation" EntitySet="EvaluationSet" />
+    </AssociationSet>
+    <AssociationSet Name="HotelOwnerHotel" Association="Model1.Store.HotelOwnerHotel">
+      <End Role="HotelOwner" EntitySet="HotelOwnerSet" />
+      <End Role="Hotel" EntitySet="HotelSet" />
+    </AssociationSet>
+    <AssociationSet Name="HotelEvaluation" Association="Model1.Store.HotelEvaluation">
+      <End Role="Hotel" EntitySet="HotelSet" />
+      <End Role="Evaluation" EntitySet="EvaluationSet" />
+    </AssociationSet>
+    <AssociationSet Name="HotelRoom" Association="Model1.Store.HotelRoom">
+      <End Role="Hotel" EntitySet="HotelSet" />
+      <End Role="Room" EntitySet="RoomSet" />
+    </AssociationSet>
+    <AssociationSet Name="CurrencyHotelOwner" Association="Model1.Store.CurrencyHotelOwner">
+      <End Role="Currency" EntitySet="CurrencySet" />
+      <End Role="HotelOwner" EntitySet="HotelOwnerSet" />
+    </AssociationSet>
+    <AssociationSet Name="CustomerBooking" Association="Model1.Store.CustomerBooking">
+      <End Role="Customer" EntitySet="CustomerSet" />
+      <End Role="Booking" EntitySet="BookingSet" />
+    </AssociationSet>
+    <AssociationSet Name="RoomBooking" Association="Model1.Store.RoomBooking">
+      <End Role="Room" EntitySet="RoomSet" />
+      <End Role="Booking" EntitySet="BookingSet" />
+    </AssociationSet>
+    <AssociationSet Name="RoomService" Association="Model1.Store.RoomService">
+      <End Role="Room" EntitySet="RoomSet" />
+      <End Role="Service" EntitySet="ServiceSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="CustomerSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="Phone" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="StatusName" Type="nvarchar" Nullable="false" MaxLength="8" />
+    <Property Name="BookingsMadeTotal" Type="smallint" Nullable="false" />
+    <Property Name="Currency_ISOcode" Type="nvarchar" MaxLength="3" Nullable="true" />
+  </EntityType>
+  <EntityType Name="CreditCardSet">
+    <Key>
+      <PropertyRef Name="CreditCardNumber" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CreditCardNumber" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="CreditCardType" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="CardholderName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Customer_Id" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="HotelSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HotelName" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="StreetNameNumber" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="PostalCode" Type="nvarchar" Nullable="false" MaxLength="8" />
+    <Property Name="City" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Country" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="HotelPhotoUrl" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="AverageRating" Type="float" Nullable="true" />
+    <Property Name="HotelOwner_Id" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="BookingSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CheckIn" Type="datetime" Nullable="false" />
+    <Property Name="CheckOut" Type="datetime" Nullable="false" />
+    <Property Name="PersonsNumber" Type="smallint" Nullable="false" />
+    <Property Name="AmountPaid" Type="float" Nullable="false" />
+    <Property Name="DateMade" Type="datetime" Nullable="false" />
+    <Property Name="Evaluated" Type="bit" Nullable="false" DefaultValue="false" />
+    <Property Name="CustomerId" Type="int" Nullable="true" />
+    <Property Name="RoomId" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="HotelOwnerSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="Currency_ISOcode" Type="nvarchar" MaxLength="3" Nullable="true" />
+  </EntityType>
+  <EntityType Name="CurrencySet">
+    <Key>
+      <PropertyRef Name="ISOcode" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ISOcode" Type="nvarchar" Nullable="false" MaxLength="3" />
+    <Property Name="CurrencyName" Type="nvarchar" Nullable="false" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="EvaluationSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EvaluationDate" Type="datetime" Nullable="false" />
+    <Property Name="Rating" Type="float" Nullable="false" />
+    <Property Name="Comment" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="Customer_Id" Type="int" Nullable="true" />
+    <Property Name="Hotel_Id" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="ServiceSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ServiceName" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Room_Id" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="RoomSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoomName" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Rate" Type="float" Nullable="false" />
+    <Property Name="MaxPersons" Type="smallint" Nullable="false" />
+    <Property Name="RoomNumber" Type="nvarchar" Nullable="false" MaxLength="5" />
+    <Property Name="RoomPhotoUrl" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Hotel_Id" Type="int" Nullable="true" />
+  </EntityType>
+  <Association Name="CustomerCreditCard">
+    <End Role="Customer" Type="Model1.Store.CustomerSet" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CreditCard" Type="Model1.Store.CreditCardSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CreditCard">
+        <PropertyRef Name="Customer_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CurrencyCustomer">
+    <End Role="Currency" Type="Model1.Store.CurrencySet" Multiplicity="0..1" />
+    <End Role="Customer" Type="Model1.Store.CustomerSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currency">
+        <PropertyRef Name="ISOcode" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="Currency_ISOcode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CustomerEvaluation">
+    <End Role="Customer" Type="Model1.Store.CustomerSet" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Evaluation" Type="Model1.Store.EvaluationSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Evaluation">
+        <PropertyRef Name="Customer_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HotelOwnerHotel">
+    <End Role="HotelOwner" Type="Model1.Store.HotelOwnerSet" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Hotel" Type="Model1.Store.HotelSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HotelOwner">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Hotel">
+        <PropertyRef Name="HotelOwner_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HotelEvaluation">
+    <End Role="Hotel" Type="Model1.Store.HotelSet" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Evaluation" Type="Model1.Store.EvaluationSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hotel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Evaluation">
+        <PropertyRef Name="Hotel_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HotelRoom">
+    <End Role="Hotel" Type="Model1.Store.HotelSet" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Room" Type="Model1.Store.RoomSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hotel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Room">
+        <PropertyRef Name="Hotel_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CurrencyHotelOwner">
+    <End Role="Currency" Type="Model1.Store.CurrencySet" Multiplicity="0..1" />
+    <End Role="HotelOwner" Type="Model1.Store.HotelOwnerSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currency">
+        <PropertyRef Name="ISOcode" />
+      </Principal>
+      <Dependent Role="HotelOwner">
+        <PropertyRef Name="Currency_ISOcode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CustomerBooking">
+    <End Role="Customer" Type="Model1.Store.CustomerSet" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Booking" Type="Model1.Store.BookingSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RoomBooking">
+    <End Role="Room" Type="Model1.Store.RoomSet" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Booking" Type="Model1.Store.BookingSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="RoomId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RoomService">
+    <End Role="Room" Type="Model1.Store.RoomSet" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Service" Type="Model1.Store.ServiceSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Service">
+        <PropertyRef Name="Room_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="Model1Container1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CustomerSet" EntityType="Model1.Customer" />
+          <EntitySet Name="CreditCardSet" EntityType="Model1.CreditCard" />
+          <EntitySet Name="HotelSet" EntityType="Model1.Hotel" />
+          <EntitySet Name="BookingSet" EntityType="Model1.Booking" />
+          <EntitySet Name="HotelOwnerSet" EntityType="Model1.HotelOwner" />
+          <EntitySet Name="CurrencySet" EntityType="Model1.Currency" />
+          <EntitySet Name="EvaluationSet" EntityType="Model1.Evaluation" />
+          <EntitySet Name="ServiceSet" EntityType="Model1.Service" />
+          <EntitySet Name="RoomSet" EntityType="Model1.Room" />
+          <AssociationSet Name="CustomerCreditCard" Association="Model1.CustomerCreditCard">
+            <End Role="Customer" EntitySet="CustomerSet" />
+            <End Role="CreditCard" EntitySet="CreditCardSet" />
+          </AssociationSet>
+          <AssociationSet Name="CurrencyCustomer" Association="Model1.CurrencyCustomer">
+            <End Role="Currency" EntitySet="CurrencySet" />
+            <End Role="Customer" EntitySet="CustomerSet" />
+          </AssociationSet>
+          <AssociationSet Name="CustomerEvaluation" Association="Model1.CustomerEvaluation">
+            <End Role="Customer" EntitySet="CustomerSet" />
+            <End Role="Evaluation" EntitySet="EvaluationSet" />
+          </AssociationSet>
+          <AssociationSet Name="HotelOwnerHotel" Association="Model1.HotelOwnerHotel">
+            <End Role="HotelOwner" EntitySet="HotelOwnerSet" />
+            <End Role="Hotel" EntitySet="HotelSet" />
+          </AssociationSet>
+          <AssociationSet Name="HotelEvaluation" Association="Model1.HotelEvaluation">
+            <End Role="Hotel" EntitySet="HotelSet" />
+            <End Role="Evaluation" EntitySet="EvaluationSet" />
+          </AssociationSet>
+          <AssociationSet Name="HotelRoom" Association="Model1.HotelRoom">
+            <End Role="Hotel" EntitySet="HotelSet" />
+            <End Role="Room" EntitySet="RoomSet" />
+          </AssociationSet>
+          <AssociationSet Name="CurrencyHotelOwner" Association="Model1.CurrencyHotelOwner">
+            <End Role="Currency" EntitySet="CurrencySet" />
+            <End Role="HotelOwner" EntitySet="HotelOwnerSet" />
+          </AssociationSet>
+          <AssociationSet Name="CustomerBooking" Association="Model1.CustomerBooking">
+            <End Role="Customer" EntitySet="CustomerSet" />
+            <End Role="Booking" EntitySet="BookingSet" />
+          </AssociationSet>
+          <AssociationSet Name="RoomBooking" Association="Model1.RoomBooking">
+            <End Role="Room" EntitySet="RoomSet" />
+            <End Role="Booking" EntitySet="BookingSet" />
+          </AssociationSet>
+          <AssociationSet Name="RoomService" Association="Model1.RoomService">
+            <End Role="Room" EntitySet="RoomSet" />
+            <End Role="Service" EntitySet="ServiceSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="30" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="20" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="30" />
+          <Property Name="StatusName" Type="String" Nullable="false" MaxLength="8" />
+          <Property Name="BookingsMadeTotal" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="CreditCard" Relationship="Model1.CustomerCreditCard" FromRole="Customer" ToRole="CreditCard" />
+          <NavigationProperty Name="Currency" Relationship="Model1.CurrencyCustomer" FromRole="Customer" ToRole="Currency" />
+          <NavigationProperty Name="Evaluation" Relationship="Model1.CustomerEvaluation" FromRole="Customer" ToRole="Evaluation" />
+          <NavigationProperty Name="Booking" Relationship="Model1.CustomerBooking" FromRole="Customer" ToRole="Booking" />
+        </EntityType>
+        <EntityType Name="CreditCard">
+          <Key>
+            <PropertyRef Name="CreditCardNumber" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreditCardNumber" Type="String" Nullable="false" MaxLength="16" />
+          <Property Name="CreditCardType" Type="String" Nullable="false" MaxLength="20" />
+          <Property Name="CardholderName" Type="String" Nullable="false" MaxLength="50" />
+          <NavigationProperty Name="Customer" Relationship="Model1.CustomerCreditCard" FromRole="CreditCard" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Hotel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HotelName" Type="String" Nullable="false" MaxLength="30" />
+          <Property Name="StreetNameNumber" Type="String" Nullable="false" MaxLength="40" />
+          <Property Name="PostalCode" Type="String" Nullable="false" MaxLength="8" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="20" />
+          <Property Name="Country" Type="String" Nullable="false" MaxLength="20" />
+          <NavigationProperty Name="HotelOwner" Relationship="Model1.HotelOwnerHotel" FromRole="Hotel" ToRole="HotelOwner" />
+          <NavigationProperty Name="Evaluation" Relationship="Model1.HotelEvaluation" FromRole="Hotel" ToRole="Evaluation" />
+          <NavigationProperty Name="Room" Relationship="Model1.HotelRoom" FromRole="Hotel" ToRole="Room" />
+          <Property Name="HotelPhotoUrl" Type="String" Nullable="true" MaxLength="50" />
+          <Property Name="AverageRating" Type="Double" Nullable="true" />
+        </EntityType>
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CheckIn" Type="DateTime" Nullable="false" />
+          <Property Name="CheckOut" Type="DateTime" Nullable="false" />
+          <Property Name="PersonsNumber" Type="Int16" Nullable="false" />
+          <Property Name="AmountPaid" Type="Double" Nullable="false" />
+          <Property Name="DateMade" Type="DateTime" Nullable="false" />
+          <Property Name="Evaluated" Type="Boolean" Nullable="false" DefaultValue="false" />
+          <NavigationProperty Name="Customer" Relationship="Model1.CustomerBooking" FromRole="Booking" ToRole="Customer" />
+          <Property Name="CustomerId" Type="Int32" Nullable="true" />
+          <NavigationProperty Name="Room" Relationship="Model1.RoomBooking" FromRole="Booking" ToRole="Room" />
+          <Property Name="RoomId" Type="Int32" Nullable="true" />
+        </EntityType>
+        <EntityType Name="HotelOwner">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="30" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="30" />
+          <NavigationProperty Name="Hotel" Relationship="Model1.HotelOwnerHotel" FromRole="HotelOwner" ToRole="Hotel" />
+          <NavigationProperty Name="Currency" Relationship="Model1.CurrencyHotelOwner" FromRole="HotelOwner" ToRole="Currency" />
+        </EntityType>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="ISOcode" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ISOcode" Type="String" Nullable="false" MaxLength="3" />
+          <Property Name="CurrencyName" Type="String" Nullable="false" MaxLength="25" />
+          <NavigationProperty Name="Customer" Relationship="Model1.CurrencyCustomer" FromRole="Currency" ToRole="Customer" />
+          <NavigationProperty Name="HotelOwner" Relationship="Model1.CurrencyHotelOwner" FromRole="Currency" ToRole="HotelOwner" />
+        </EntityType>
+        <EntityType Name="Evaluation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EvaluationDate" Type="DateTime" Nullable="false" />
+          <Property Name="Rating" Type="Double" Nullable="false" />
+          <Property Name="Comment" Type="String" Nullable="false" MaxLength="500" />
+          <NavigationProperty Name="Customer" Relationship="Model1.CustomerEvaluation" FromRole="Evaluation" ToRole="Customer" />
+          <NavigationProperty Name="Hotel" Relationship="Model1.HotelEvaluation" FromRole="Evaluation" ToRole="Hotel" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceName" Type="String" Nullable="false" MaxLength="20" />
+          <NavigationProperty Name="Room" Relationship="Model1.RoomService" FromRole="Service" ToRole="Room" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoomName" Type="String" Nullable="false" MaxLength="40" />
+          <Property Name="Rate" Type="Double" Nullable="false" />
+          <Property Name="MaxPersons" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Hotel" Relationship="Model1.HotelRoom" FromRole="Room" ToRole="Hotel" />
+          <NavigationProperty Name="Booking" Relationship="Model1.RoomBooking" FromRole="Room" ToRole="Booking" />
+          <Property Name="RoomNumber" Type="String" Nullable="false" MaxLength="5" />
+          <NavigationProperty Name="Service" Relationship="Model1.RoomService" FromRole="Room" ToRole="Service" />
+          <Property Name="RoomPhotoUrl" Type="String" Nullable="true" MaxLength="50" />
+        </EntityType>
+        <Association Name="CustomerCreditCard">
+          <End Type="Model1.Customer" Role="Customer" Multiplicity="0..1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.CreditCard" Role="CreditCard" Multiplicity="*" />
+        </Association>
+        <Association Name="CurrencyCustomer">
+          <End Type="Model1.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="Model1.Customer" Role="Customer" Multiplicity="*" />
+        </Association>
+        <Association Name="CustomerEvaluation">
+          <End Type="Model1.Customer" Role="Customer" Multiplicity="0..1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.Evaluation" Role="Evaluation" Multiplicity="*" />
+        </Association>
+        <Association Name="HotelOwnerHotel">
+          <End Type="Model1.HotelOwner" Role="HotelOwner" Multiplicity="0..1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.Hotel" Role="Hotel" Multiplicity="*" />
+        </Association>
+        <Association Name="HotelEvaluation">
+          <End Type="Model1.Hotel" Role="Hotel" Multiplicity="0..1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.Evaluation" Role="Evaluation" Multiplicity="*" />
+        </Association>
+        <Association Name="HotelRoom">
+          <End Type="Model1.Hotel" Role="Hotel" Multiplicity="0..1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.Room" Role="Room" Multiplicity="*" />
+        </Association>
+        <Association Name="CurrencyHotelOwner">
+          <End Type="Model1.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="Model1.HotelOwner" Role="HotelOwner" Multiplicity="*" />
+        </Association>
+        <Association Name="CustomerBooking">
+          <End Type="Model1.Customer" Role="Customer" Multiplicity="0..1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.Booking" Role="Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RoomBooking">
+          <End Type="Model1.Room" Role="Room" Multiplicity="0..1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.Booking" Role="Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RoomService">
+          <End Type="Model1.Room" Role="Room" Multiplicity="0..1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.Service" Role="Service" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="Model1Container1">
+    <EntitySetMapping Name="CustomerSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Customer)">
+        <MappingFragment StoreEntitySet="CustomerSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="BookingsMadeTotal" ColumnName="BookingsMadeTotal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CreditCardSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.CreditCard)">
+        <MappingFragment StoreEntitySet="CreditCardSet">
+          <ScalarProperty Name="CreditCardNumber" ColumnName="CreditCardNumber" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CreditCardType" ColumnName="CreditCardType" />
+          <ScalarProperty Name="CardholderName" ColumnName="CardholderName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HotelSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Hotel)">
+        <MappingFragment StoreEntitySet="HotelSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="HotelName" ColumnName="HotelName" />
+          <ScalarProperty Name="StreetNameNumber" ColumnName="StreetNameNumber" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="HotelPhotoUrl" ColumnName="HotelPhotoUrl" />
+          <ScalarProperty Name="AverageRating" ColumnName="AverageRating" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BookingSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Booking)">
+        <MappingFragment StoreEntitySet="BookingSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CheckIn" ColumnName="CheckIn" />
+          <ScalarProperty Name="CheckOut" ColumnName="CheckOut" />
+          <ScalarProperty Name="PersonsNumber" ColumnName="PersonsNumber" />
+          <ScalarProperty Name="AmountPaid" ColumnName="AmountPaid" />
+          <ScalarProperty Name="DateMade" ColumnName="DateMade" />
+          <ScalarProperty Name="Evaluated" ColumnName="Evaluated" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HotelOwnerSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.HotelOwner)">
+        <MappingFragment StoreEntitySet="HotelOwnerSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CurrencySet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Currency)">
+        <MappingFragment StoreEntitySet="CurrencySet">
+          <ScalarProperty Name="ISOcode" ColumnName="ISOcode" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EvaluationSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Evaluation)">
+        <MappingFragment StoreEntitySet="EvaluationSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="EvaluationDate" ColumnName="EvaluationDate" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Service)">
+        <MappingFragment StoreEntitySet="ServiceSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoomSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Room)">
+        <MappingFragment StoreEntitySet="RoomSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RoomName" ColumnName="RoomName" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="MaxPersons" ColumnName="MaxPersons" />
+          <ScalarProperty Name="RoomNumber" ColumnName="RoomNumber" />
+          <ScalarProperty Name="RoomPhotoUrl" ColumnName="RoomPhotoUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="CustomerCreditCard" TypeName="Model1.CustomerCreditCard" StoreEntitySet="CreditCardSet">
+      <EndProperty Name="Customer">
+        <ScalarProperty Name="Id" ColumnName="Customer_Id" />
+      </EndProperty>
+      <EndProperty Name="CreditCard">
+        <ScalarProperty Name="CreditCardNumber" ColumnName="CreditCardNumber" />
+      </EndProperty>
+      <Condition ColumnName="Customer_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CurrencyCustomer" TypeName="Model1.CurrencyCustomer" StoreEntitySet="CustomerSet">
+      <EndProperty Name="Currency">
+        <ScalarProperty Name="ISOcode" ColumnName="Currency_ISOcode" />
+      </EndProperty>
+      <EndProperty Name="Customer">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Currency_ISOcode" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CustomerEvaluation" TypeName="Model1.CustomerEvaluation" StoreEntitySet="EvaluationSet">
+      <EndProperty Name="Customer">
+        <ScalarProperty Name="Id" ColumnName="Customer_Id" />
+      </EndProperty>
+      <EndProperty Name="Evaluation">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Customer_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="HotelOwnerHotel" TypeName="Model1.HotelOwnerHotel" StoreEntitySet="HotelSet">
+      <EndProperty Name="HotelOwner">
+        <ScalarProperty Name="Id" ColumnName="HotelOwner_Id" />
+      </EndProperty>
+      <EndProperty Name="Hotel">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="HotelOwner_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="HotelEvaluation" TypeName="Model1.HotelEvaluation" StoreEntitySet="EvaluationSet">
+      <EndProperty Name="Hotel">
+        <ScalarProperty Name="Id" ColumnName="Hotel_Id" />
+      </EndProperty>
+      <EndProperty Name="Evaluation">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Hotel_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="HotelRoom" TypeName="Model1.HotelRoom" StoreEntitySet="RoomSet">
+      <EndProperty Name="Hotel">
+        <ScalarProperty Name="Id" ColumnName="Hotel_Id" />
+      </EndProperty>
+      <EndProperty Name="Room">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Hotel_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CurrencyHotelOwner" TypeName="Model1.CurrencyHotelOwner" StoreEntitySet="HotelOwnerSet">
+      <EndProperty Name="Currency">
+        <ScalarProperty Name="ISOcode" ColumnName="Currency_ISOcode" />
+      </EndProperty>
+      <EndProperty Name="HotelOwner">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Currency_ISOcode" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RoomService" TypeName="Model1.RoomService" StoreEntitySet="ServiceSet">
+      <EndProperty Name="Room">
+        <ScalarProperty Name="Id" ColumnName="Room_Id" />
+      </EndProperty>
+      <EndProperty Name="Service">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Room_Id" IsNull="false" />
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
